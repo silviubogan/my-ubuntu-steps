@@ -1,62 +1,59 @@
-- Install updates.
+- Instalează actualizări.
 
 - http://ubuntuhandbook.org/index.php/2014/10/enable-hibernate-option-in-ubuntu-14-10-unity/
 
-- Install Dropbox from the official website (adds the Apt repository for updates).
-	- To restart nautilus, the file manager: http://askubuntu.com/questions/19979/how-to-restart-nautilus-without-logging-out
+- Instalează Dropbox de pe site-ul web oficial (adaugă depozitul Apt pentru actualizări).
+	- Pentru a reporni Nautilus, managerul de fișiere: http://askubuntu.com/questions/19979/how-to-restart-nautilus-without-logging-out
 	- Dropbox Preferences > Bandwidth > Upload rate > Don't limit.
 
 - Firefox:
-	- Set up Firefox Sync (sync key is in Dropbox).
-	- After the first sync, restart the browser.
+	- Configurează Firefox Sync (cheia de sincronizare este în Dropbox).
+	- După prima sincronizare, repornește navigatorul web.
 	- Preferințe
-		- Avansat -> General -> Navigare -> Folosește derularea lină -> Fals.
-		- Uncheck Prompt integration at every website
-	- FimFX Options
-		- remove Gmail from blacklist
+		- Avansat -> General -> Navigare -> Folosește derularea lină -> Fals;
+		- Debifează Prompt integration at every website.
+	- Opțiuni VimFX
+		- șterge Gmail din lista neagră
 	- Preferințe extensie: Gestionar de sesiuni
-	    - General > Salvare și restaurare > Salvare sesiune > Number of back button history entries per tab to save > -1 (all)
-	- add 'b' keyword for Bing search engine
+	    - General > Salvare și restaurare > Salvare sesiune > Number of back button history entries per tab to save > -1 (toate)
+	- adaugă cuvântul cheie (keyword) 'b' pentru motorul de căutare Bing
 
-- instalez pachetul `cheese` - pentru webcam (la laptop, de exemplu)
-	- https://help.ubuntu.com/community/Webcam
+- Instalez pachetul `cheese` - pentru webcam (la laptop, de exemplu)
+	- https://help.ubuntu.com/community/Webcam.
 
-- pictograma bateriei de pe bara de sus: clic -> Show Time in Menu Bar (pe Laptop)
+- Pictograma bateriei de pe bara de sus (de meniu a sistemului): clic -> Show Time in Menu Bar (pe Laptop).
 
-- Install 'chromium-browser' package or Chrome
-	- Enable sync
-	- Set it as the default browser.
-	- Open Pocket app and let it sync, add it to the launcher.
-	- Activez Click-to-Play: chrome://settings/content (setarea asta se sincronizează, din câte văd)
-	- Activez următoarele flaguri în chrome://flags:
-		#disable-hyperlink-auditing
-		#enable-smooth-scrolling
-		#enable-devtools-experiments - then in devtools enable experiments such as Canvas inspection, Toolbar customization...
-		#enable-download-resumption
-		eventual #ignore-gpu-blacklist => Canvas, Flash accelerate hardware (nu am măsurat beneficiile,
+- Instalează pachetul 'chromium-browser' sau Chrome
+	- Activează sincronizarea (sync);
+	- Set it as the default browser;
+	- Open Pocket app and let it sync, add it to the launcher;
+	- Activez Click-to-Play: [chrome://settings/content](chrome://settings/content) (setarea asta se sincronizează, din câte văd);
+	- Activez următoarele flaguri în [chrome://flags](chrome://flags):
+		- #disable-hyperlink-auditing
+		- #enable-smooth-scrolling
+		- #enable-devtools-experiments - then in devtools enable experiments such as Canvas inspection, Toolbar customization...
+		- #enable-download-resumption
+		- eventual #ignore-gpu-blacklist => Canvas, Flash accelerate hardware (nu am măsurat beneficiile,
 		procesorul e destul de folosit și cu opțiunea aceasta activată) -> mai bine nu, apar probleme cu redesenarea paginilor la anumite schimbări, la fel și la flash. Fără această opțiune activată, nu apar așa des, sau chiar deloc. - FALS, apar, și la fel de neplăcute sunt. Nu cred că Smooth scrolling e de vină pentru că și la trecerea de la un tab la altul, fără derulare, imaginea paginii rămâne fixă.
-	- It's a memory hog. YouTube and GPU process use a lot of RAM. Killing the GPU process restarts it with low RAM usage.
-		From what I've seen in the Chromium Task Manager:
-			- the memory hog is not because of Flash or YouTube although they take up RAM too.
-			- the memory hog does not appear immediately at start up (constant 17.004K after startup of Chromium, with music in YouTube playing - a little scrolling and tab closing raised this to 60.532K, Smooth scrolling is the problem?).
+			- It's a memory hog. YouTube and GPU process use a lot of RAM. Killing the GPU process restarts it with low RAM usage.
+			From what I've seen in the Chromium Task Manager:
+				- the memory hog is not because of Flash or YouTube although they take up RAM too.
+				- the memory hog does not appear immediately at start up (constant 17.004K after startup of Chromium, with music in YouTube playing - a little scrolling and tab closing raised this to 60.532K, Smooth scrolling is the problem?).
 	- In Chrome Developer Tools settings, enable 'Disable cache while Devtools is open' option.
 	- Vimium extension options > remove Gmail from the list of excepted websites.
 	- Chromium > Tab Ahead icon -> Options -> All Windows
 	- If some extensions don't work, do the following to update chromium-browser to the latest version
-		BUG: chromium-browser is at old version 29 in the official repositories
-			- walkaround:
-				http://askubuntu.com/questions/89058/how-to-install-the-latest-stable-version-of-chromium
-				http://askubuntu.com/questions/317201/how-do-i-install-the-latest-version-of-chromium-in-ubuntu-13-10
-				
-				http://askubuntu.com/a/368908/29733
-				> `sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa` then check for updates
+		- BUG: chromium-browser is at old version 29 in the official repositories. Walkaround:
+			- http://askubuntu.com/questions/89058/how-to-install-the-latest-stable-version-of-chromium
+			- http://askubuntu.com/questions/317201/how-do-i-install-the-latest-version-of-chromium-in-ubuntu-13-10	
+			- http://askubuntu.com/a/368908/29733
+				- `$ sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa` then check for updates
 
 - Flash
-	- BUG: Flash Player visual artifacts/defects/glitches/render issues etc.
-		Possible solutions: Many ways to install Flash Player on askubuntu, ubuntu forums, google, check if error appears in google chrome and firefox, not just in chromium, or if disabling hwd acceleration or switching to nouveau driver solves the problem
-			http://askubuntu.com/questions/180629/flash-problem-after-installed-nvidia?rq=1
-			http://askubuntu.com/questions/86164/how-do-i-fix-flash-issues
-			http://askubuntu.com/questions/11/how-do-i-install-adobe-flash-player
+	- BUG: Flash Player visual artifacts/defects/glitches/render issues etc. Possible solutions: Many ways to install Flash Player on askubuntu, ubuntu forums, google, check if error appears in google chrome and firefox, not just in chromium, or if disabling hdw acceleration or switching to nouveau driver solves the problem
+		- http://askubuntu.com/questions/180629/flash-problem-after-installed-nvidia?rq=1
+		- http://askubuntu.com/questions/86164/how-do-i-fix-flash-issues
+		- http://askubuntu.com/questions/11/how-do-i-install-adobe-flash-player
 	- BUG (maybe part of the bug above): Flash bug on YouTube: after you scroll the page, the YT player becomes black. Reloading the page sometimes solves the problem. On FF it's the same situation.
 
 - Configurări de sistem - Toate configurările
@@ -77,30 +74,30 @@
 - Terminala
     - Instalează pachetul apt „fish”, apoi instalez conform instrucțiunilor din
       [depozitul său GitHub](https://github.com/oh-my-fish/oh-my-fish) scriptul `oh-my-fish`, instalez tema
-      `[bobmyfish](https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md#bobthefish)` și
+      [`bobmyfish`](https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/Themes.md#bobthefish) și
       pentru ca aceasta să fie afișată corect de terminal, folosesc un font
       special de
       [aici](https://github.com/ryanoasis/nerd-fonts#option-3-install-script), acum folosesc [fontul Hack](https://github.com/source-foundry/Hack) și sunt perfect mulțumit. Pentru ca fish să fie în loc de bash în orice terminal, folosesc comanda:
        `chsh -s /usr/bin/fish` și dau un log out apoi un log in la sistem,
-       conform: https://askubuntu.com/a/26440/29733 .
+       conform: https://askubuntu.com/a/26440/29733, dar astfel în terminalele nou deschise nu se mai încarcă `.bashrc` deci în loc de asta, adaug la sfârșitul `.bashrc` linia `exec fish`.
     - Editare -> Preferințe profil
-        -> Dacă nu folosesc fontul Hack sau altul pentru fish: Generale -> Font -> Monospace 10;
-        -> Derulare -> Derulează înapoi -> Nelimitat.
+        - Dacă nu folosesc fontul Hack sau altul pentru fish: Generale -> Font -> Monospace 10;
+        - Derulare -> Derulează înapoi -> Nelimitat.
 
 - Remove from launcher: Amazon, Ubuntu One, Ubuntu One Music, LibreOffice apps.
-- Add to launcher: GNOME Terminal, PasswordSafe, Chromium, Sublime Text
+- Add to launcher: GNOME Terminal, PasswordSafe, Chromium, Sublime Text.
 
 - Install PasswordSafe: http://sourceforge.net/projects/passwordsafe/files/Linux-BETA/
-	BUG: no PPA, no automatic updates (like on Windows, actually)
-		http://sourceforge.net/p/passwordsafe/discussion/134801/thread/f3c0bdc1/
-		http://sourceforge.net/p/passwordsafe/support-requests/380/
-		http://sourceforge.net/p/passwordsafe/discussion/search/?q=PPA
-		Walkaround: ??
-			https://launchpad.net/+search?field.text=passwordsafe
-			https://bugs.launchpad.net/pasaffe/+bug/1190506 „Pasaffe is Password Safe compatible”
-			- BUG: can't hide password with stars in edit dialog
-			- BUG: less features
-			I'm not sure how can a Python app be secure enough to handle password management
+	- BUG: no PPA, no automatic updates (like on Windows, actually)
+		- http://sourceforge.net/p/passwordsafe/discussion/134801/thread/f3c0bdc1/
+		- http://sourceforge.net/p/passwordsafe/support-requests/380/
+		- http://sourceforge.net/p/passwordsafe/discussion/search/?q=PPA
+		- Walkaround: ??
+			- https://launchpad.net/+search?field.text=passwordsafe
+			- https://bugs.launchpad.net/pasaffe/+bug/1190506 „Pasaffe is Password Safe compatible”
+				- BUG: can't hide password with stars in edit dialog
+				- BUG: less features
+				- I'm not sure how can a Python app be secure enough to handle password management
 
 - Probleme cu funcția de Sleep și Lock
 	- „artefacte vizuale” după revenire și sistem nefuncțional
