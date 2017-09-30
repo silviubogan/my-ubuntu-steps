@@ -27,8 +27,10 @@
 	- Activează sincronizarea (sync);
 	- Set it as the default browser;
 	- Open Pocket app and let it sync, add it to the launcher;
+	- În Chrome, după ce se sincronizează extensiile, în opțiunile extensiei Google Translate verific să fie activat butonul de popup și pe paginile care sunt în limba mea (română).
 	- Activez Click-to-Play: [chrome://settings/content](chrome://settings/content) (setarea asta se sincronizează, din câte văd);
 	- Activez următoarele flaguri în [chrome://flags](chrome://flags):
+		- [chrome://flags/#enable-tab-audio-muting](chrome://flags/#enable-tab-audio-muting)
 		- #disable-hyperlink-auditing
 		- #enable-smooth-scrolling
 		- #enable-devtools-experiments - then in devtools enable experiments such as Canvas inspection, Toolbar customization...
@@ -230,10 +232,13 @@
 - Install ubuntu-tweak after adding this PPA: https://launchpad.net/~tualatrix/+archive/ppa (only if I start using some option in it).
 
 - Install VIM
-    - Copy `.vimrc` file from my `dotfiles` GitHub repo, install Vimium (see the readme
+    - Copy [the `.vimrc` file from my `dotfiles` GitHub repo](https://github.com/silviubogan/dotfiles/blob/master/.vimrc), install Vimium (see the readme
       file in their GitHub repository) (- here I think I wanted to write Vundle
       instead of Vimium) and then install all the plugins in the
       `.vimrc` file with `:PluginInstall`.
+	Configurare VIM:
+	- Pentru ca "*y și "*p să funcționeze (copiere și lipire în clipboard-ul sistemului), instalez pachetul vim-gtk și verific cu comanda `:echo has('clipboard')` să se afișeze 1, nu 0. De asemenea, acest pachet schimbă și titlurile terminalelor cu VIM în „[nume fișier] [un + dacă fișierule modificat] ([cale către fișier]) - VIM”.
+	- E bine să fac copie de siguranță înainte de instalarea sistemului la `.vimrc`, sau să pun ultimele modificări [în depozitul meu `dotfiles`](https://github.com/silviubogan/dotfiles/blob/master/.vimrc).
 
 - Install git
 	- Removing --global from the following git-config commands only sets the option for the repository in the current directory.
@@ -334,191 +339,100 @@ I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in 
 - Pentru analizarea performanței C++ în Qt Creator rulez: `sudo apt-get install valgrind`.
 
 - Pentru aflarea temperaturii CPU: http://askubuntu.com/questions/15832/how-do-i-get-the-cpu-temperature
-	sudo apt-get install lm-sensors
-	sudo sensors-detect # Răspund cu da la toate sau aproape toate întrebările
-	sudo service kmod start
-	sensors
+	```
+	$ sudo apt-get install lm-sensors
+	$ sudo sensors-detect # Răspund cu da la toate sau aproape toate întrebările
+	$ sudo service kmod start
+	$ sensors
+	```
 
-- Dacă voi avea nevoie, instalez TeamViewer x32: http://www.teamviewer.com
+- Instalez TeamViewer x86: http://www.teamviewer.com
 	- versiunea x64 pentru Debian/Ubuntu are o „dependență nesatisfăcută”.
 
-//- Instalez liferea și încarc fluxurile salvate. - prezintă dezavantajul că nu se sincronizează datele despre articolele citite cu Windows
+- Instalez audacity pt. înregistrare sunet. https://help.ubuntu.com/community/AudioCapture
 
-- Instalez audacity pt. înregistrare sunet.
-	https://help.ubuntu.com/community/AudioCapture
+- TODO: automontarea partitiei Files, pentru inregistrearea automata a melodiilor in programul de ascultare de muzica Rhythmbox, dar sa vezi doar melodiile din partitia Linux, si asta poate prezenta avantaje sau fi de dorit.
 
-- Install updates.
+- Alt program folositor de instalat (URI-uri de introdus în Chrome): [apt://unity-tweak-tool](apt://unity-tweak-tool) (o instalez și când o deschid apare mesajul:
+	- > The following schema is missing
+	  >	
+	  > com.canonical.unity.webapps
+	  >	
+	  > In order to work properly, Unity Tweak Tool recommends you install the necessary packages.
+	
+	- Pe askubuntu problema se rezolvă astfel:
+		```
+		sudo apt-get install unity-webapps-service
+		```
+	- Configurare
+		- Unity > Launcher > Behaviour > Minimize single window applications on click > True
+		- Window Manager > Hotcorners > Behaviour > Top-left: Show Workspaces
 
-- Poate rulez și:
-	sudo apt-get autoremove
+- Sigur folositoare, necesare chiar:
+https://apps.ubuntu.com/cat/applications/ubuntu-restricted-extras/ (pentru redare MP3-uri etc.)
+- Instalez VLC, GIMP.
+- Instalez Skype
+	- instalez de pe site-ul oficial www.skype.com sau din Ubuntu Software Center DAR în 29.07.2017 în Ubuntu Software este o versiune nefuncțională de Skype și pe site-ul www.skype.com e o versiune funcțională;
+	- restartez Unity dacă nu găsesc în Dash pictograma Skype să o trag pe bara din partea stângă cu programe, și dacă nu se lipește de bară, deschid Skype și apoi fac clic dreapta pe pictograma apărută pe bară și selectez `Blochează pe lansator`.
 
-TODO: automontarea partitiei Files, pentru inregistrearea automata a melodiilor in programul de ascultare de muzica Rhythmbox, dar sa vezi doar melodiile din partitia Linux, si asta poate prezenta avantaje sau fi de dorit
-
-Alt program folositor de instalat (URI-uri de introdus în Chrome):
-apt://unity-tweak-tool
-(o instalez și când o deschid apare mesajul:
-
-The following schema is missing
-com.canonical.unity.webapps
-In order to work properly, Unity Tweak Tool recommends you install the necessary packages.
-Pe askubuntu problema se rezolvă astfel:
-sudo apt-get install unity-webapps-service)
-	Unity > Launcher > Behaviour > Minimize single window applications on click > True
-	Window Manager > Hotcorners > Behaviour > Top-left: Show Workspaces
-
-Sigur folositoare, necesare chiar:
-https://apps.ubuntu.com/cat/applications/ubuntu-restricted-extras/ (pentru MP3-uri etc.)
-VLC, GIMP, Skype (instalez de pe site-ul oficial Skype.com sau din Ubuntu Software Center DAR în 29.07.2017 în Ubuntu Software este o versiune nefuncțională de Skype și pe site-ul Skype.com e o versiune funcțională, restartez Unity dacă nu găsesc în Dash pictograma Skype să o trag pe bara din partea stângă cu programe, și dacă nu se lipește de bară, deschid Skype și apoi fac clic dreapta pe pictograma apărută pe bară și selectez `Blochează pe lansator`), Chrome.
-
-În Chrome, după ce se sincronizează extensiile, în opțiunile extensiei Google Translate verific să fie activat butonul de popup și pe paginile care sunt în limba mea (română).
-
-Instalez drivere grafice și de altă categorie din
+- Instalez drivere grafice și de altă categorie din
 Configurări de sistem > Programe și actualizări > Drivere adiționale (Pe laptop am avut inclusiv o actualizare a Processor microcode firmware for Intel CPUs).
 
-Instalez `trash-cli` cu comanda `sudo apt-get install trash-cli` pentru comanda
+- Instalez `trash-cli` cu comanda `sudo apt-get install trash-cli` pentru comanda
 `trash` ca să nu șterg definitiv fișiere din greșeală cu `rm`.
 
-# LibreOffice Writer
-Unelte > Opțiuni > LibreOffice > Vizualizare > Șoricel > Buton mijloc mouse >
-Derulare automată.
+- Configurez LibreOffice Writer
+	- Unelte > Opțiuni > LibreOffice > Vizualizare > Șoricel > Buton mijloc mouse > Derulare automată.
 
-chrome://flags/#enable-tab-audio-muting
+- Instalez pachetul `colordiff` conținând comanda `colordiff`:
+	- pentru diff colorat.
+	- Vezi http://stackoverflow.com/a/8800636/258462.
 
-Configurare VIM:
-- Pentru ca "*y și "*p să funcționeze (copiere și lipire în clipboard-ul sistemului), instalez pachetul vim-gtk și verific cu comanda :echo has('clipboard') să se afișeze 1, nu 0. De asemenea, acest pachet schimbă și titlurile terminalelor cu VIM în „[nume fișier] [un + dacă fișierule modificat] ([cale către fișier]) - VIM”.
-- **~/.vimrc**: (dar totuși e bine să fac copie de siguranță înainte de instalarea sistemului, am pus o versiune, deși nu ultima, și pe GitHub în dotfiles repository)
+- Instalez `corebird` (client Twitter drăguț, pentru care pachete se găsesc greu):
+	- PPA: https://launchpad.net/~twolife/+archive/ubuntu/desktop
+		- Sursa: http://www.omgubuntu.co.uk/2014/11/linux-twitter-app-corebird-new-release/?utm_source=website&utm_medium=carousel&utm_campaign=carousel
 
+- Vezi aplicațiile din articolul: http://www.omgubuntu.co.uk/2014/11/useful-tools-for-ubuntu-do-you-use-them/?utm_source=website&utm_medium=carousel&utm_campaign=carousel (după ce încerc Linux Laptop Tools sau cum se numește, poate șterg link-ul din acest fișier).
 
+- În `~/.bashrc`, în caz că prompt-ul terminalului nu este colorat, modific să fie cu `yes` astfel:
+	```
+	force_color_prompt=yes
+	```
 
-
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-"Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'Enhanced-Javascript-syntax'
-Plugin 'heavenshell/vim-jsdoc'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-" Who doesn't like autoindent?
-set autoindent
-
-set smartindent
-
-" Line Numbers PWN!
-set number
-
-" Who wants an 8 character tab? Not me!
-set shiftwidth=4
-set softtabstop=4
-
-" Spaces are better than a tab character
-set expandtab
-set smarttab
-
-" Enable mouse support in console
-set mouse=a
-
-" Ignoring case is a fun trick
-set ignorecase
-
-" And so is Artificial Intellegence!
-set smartcase
-
-" Highlight things that we find with the search
-set hlsearch
-
-" This shows what you are typing as a command.
-" http://dailyvim.tumblr.com/post/3166172074/showcmd
-set showcmd
-
-" Cool tab completion stuff
-set wildmode=longest,list,full
-set wildmenu
-
-" Got backspace?
-set backspace=indent,eol,start
-
-" http://vim.wikia.com/wiki/Automatically_wrap_left_and_right
-" Or use Shift+Arrows.
-"set whichwrap+=<,>,h,l,[,]
-
-
-
-
-
-Pentru diff colorat instalez pachetul colordiff.
-- Vezi http://stackoverflow.com/a/8800636/258462 .
-
-Când reinstalez Ubuntu fac backup la ~/.vimrc și ~/.bashrc.
-
-Acest PPA pentru corebird (client Twitter drăguț, pentru care pachete se găsesc greu): https://launchpad.net/~twolife/+archive/ubuntu/desktop
-Sursa: http://www.omgubuntu.co.uk/2014/11/linux-twitter-app-corebird-new-release/?utm_source=website&utm_medium=carousel&utm_campaign=carousel
-
-Vezi aplicațiile din articolul: http://www.omgubuntu.co.uk/2014/11/useful-tools-for-ubuntu-do-you-use-them/?utm_source=website&utm_medium=carousel&utm_campaign=carousel (după ce încerc Linux Laptop Tools sau cum se numește, poate șterg link-ul din acest fișier.
-
-----
-
-# La reinstalarea Ubuntu
-Fac copie de siguranță la depozitele apt din Surse Software, inclusiv cele dezactivate care s-ar putea să înceapă să funcționeze din nou.
-
----
-
-În ~/.bashrc, în caz că prompt-ul terminalului nu este colorat, modific să fie
-cu yes astfel:
-    force_color_prompt=yes
-
----
-
-LAMP - Linux, Apache, MySQL, PHP - instalare: pachetele apache2 apoi php se
-instalează cu `sudo apt-get install apache2 php mysql-server php-mysql` apoi trebuie în /etc/apache2/apache2.conf să adăugăm la final rândul „ServerName localhost”. Dacă rulăm `sudo apachectl start` în
+- LAMP - Linux, Apache, MySQL, PHP - instalare: pachetele apache2 apoi php se
+instalează cu
+	```
+	sudo apt-get install apache2 php mysql-server php-mysql
+	```
+	apoi trebuie în /etc/apache2/apache2.conf să adăugăm la final rândul „ServerName localhost”. Dacă rulăm `sudo apachectl start` în
 terminal, putem deschide http://localhost/ în browser. Rădăcina implicită a documentelor
-Apache pe Ubuntu este /var/www/html. Scripturile PHP astfel funcționează. Pentru
-a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`.
+Apache pe Ubuntu este `/var/www/html`. Scripturile PHP astfel funcționează. Pentru
+a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modificări esențiale făcute la fișierul `/etc/apache2/apache2.conf` și în directoarele `/etc/apache2/sites-enabled`, `/etc/apache2/sites-available`:
+	- `apache2.conf` conține printre altele:
+		```
+		<Directory /home/silviu/www/>
+			Options All
+			AllowOverride All
+			Require all granted
+		</Directory>
+		```
+	- în fișierele `000-default.conf` din celelalte două directoare pun liniile:
+	    ```
+		DocumentRoot /home/silviu/www
+        DirectoryIndex index.php index.html
+		```
 
-GitHub recomandă folosirea Git prin HTTPS, nu prin SSH. Pentru asta vezi [acest articol oficial](https://help.github.com/articles/caching-your-github-password-in-git/). Pe scurt, execut două comenzi prin sudo:
-git config --global credential.helper cache
-# Set git to use the credential memory cache
-git config --global credential.helper 'cache --timeout=3600'
-# Set the cache to timeout after 1 hour (setting is in seconds)
+- GitHub recomandă folosirea Git prin HTTPS, nu prin SSH. Pentru asta vezi [acest articol oficial](https://help.github.com/articles/caching-your-github-password-in-git/). Pe scurt, execut două comenzi prin sudo:
+	```
+	$ git config --global credential.helper cache # Set git to use the credential memory cache
+	$ git config --global credential.helper 'cache --timeout=3600' # Set the cache to timeout after 1 hour (setting is in seconds)
+	```
 
+- Instalez actualizări.
+- La final rulez și:
+	```
+	$ sudo apt-get autoremove
+	```
+
+## La reinstalarea Ubuntu
+Fac copie de siguranță la depozitele apt din Surse Software, inclusiv cele dezactivate care s-ar putea să înceapă să funcționeze din nou.
