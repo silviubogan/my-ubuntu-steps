@@ -255,39 +255,34 @@
 	- about the last line: otherwise, 'git push' will print useless things about a future change in the default behavior of running 'git push'. The current behavior is 'matching' which means pushing all the branches to the remote. In git 2.0, the behavior will be 'simple' which means pushing the active branch to the correspondant upstream branch if they have the same name.
 	- When making the first push after setting up the ssh, checking the checkbox in the password dialog will make it never appear again and the pushes will just work.
 
-- Install nixnote, because everpad doesn't work currently (3 nov 2013).
-http://ubuntuhandbook.org/index.php/2013/07/install-nixnote-ubuntu-13-10-linux-mint/
-- everpad works (5 nov 2013), install it (https://github.com/nvbn/everpad), enable 'Start with system' setting
-	- it has problems with sync, sometimes it doesn't finish syncing
-	- it also breaks my special characters and diacritics
-	I think I'll use NixNote, I'm watching everpad on GitHub
+- Install nixnote, because everpad doesn't work currently (3 nov 2013): http://ubuntuhandbook.org/index.php/2013/07/install-nixnote-ubuntu-13-10-linux-mint/
+	- everpad works (5 nov 2013), install it (https://github.com/nvbn/everpad), enable 'Start with system' setting, but it has big bugs:
+		- it has problems with sync, sometimes it doesn't finish syncing
+		- it also breaks my special characters and diacritics
+	- I think I'll use NixNote, I'm watching everpad on GitHub.
 
-I had a situation in which no sound would work, and not only this, but the apps which should be playing sounds (YouTube players, local music app) were broken, the playback cursor remained at the beginning of the song.
-I've done `sudo alsa force-reload` and then I was able to launch 'alsamixer', but still no sound. And then I rebooted. The sound worked again.
-Links: http://askubuntu.com/search?q=no+sound+after+resume
-http://askubuntu.com/questions/190146/no-sound-after-suspend-resume 
+- I had a situation in which no sound would work, and not only this, but the apps which should be playing sounds (YouTube players, local music app) were broken, the playback cursor remained at the beginning of the song.
+I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in terminal, but still no sound. And then I rebooted. The sound worked again. Links:
+	- http://askubuntu.com/search?q=no+sound+after+resume
+	- http://askubuntu.com/questions/190146/no-sound-after-suspend-resume 
 
-BUG: one or two times, the user menu (with that 'settings'-like icon) disappeared from the top bar
-http://askubuntu.com/questions/201263/shutdown-and-user-button-missing-in-panel
+- BUG: one or two times, the user menu (with that 'settings'-like icon - toothed wheel) disappeared from the top bar: http://askubuntu.com/questions/201263/shutdown-and-user-button-missing-in-panel.
 
-BUG: https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/1232454
-	After resume from suspend, a window appears saying that the system will suspend very soon because of inactivity. If enough time has elapsed between the suspend and the resume, more windows will appear saying the same thing. The options in the window are OK - suspend now, and Cancel.
+- BUG: https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/1232454 : After resume from suspend, a window appears saying that the system will suspend very soon because of inactivity. If enough time has elapsed between the suspend and the resume, more windows will appear saying the same thing. The options in the window are OK - suspend now, and Cancel.
 	- There is a walkaround described in the bug report comments. I did not test it.
 
-- .rar archives are not supported by default. you must install rar and unrar packages (a prompt does this for you when you first open a .rar file)
+- Install `rar` and `unrar` packages
+	- .rar archives are not supported by default. you must install rar and unrar packages (a prompt does this for you when you first open a .rar file)
 
-- Install https://github.com/k4rthik/git-cal
+- Install https://github.com/k4rthik/git-cal (it's really nice)
 	- when installing, KEEP THE installed commit so you can uninstall it if you want
-	- it's really nice
 
-- Install Qt using the official online installer
-	http://qt-project.org/downloads
-	- if you get an error about a missing GL/gl.h when trying to run a basic Qt Quick project, install libgl1-mesa-dev package
-	- activate Todo plugin in the About Plugins window then restart
+- Install Qt using the official online installer: http://qt-project.org/downloads (also install source code, it may help in future for debugging or better understanding)
+	- if you get an error about a missing `GL/gl.h` when trying to run a basic Qt Quick project, install `libgl1-mesa-dev` package
+	- activate Todo plugin in the About Plugins window then restart then
 		- in Qt Creator -> Options -> To-Do:
 			- add TWVF To-Do keyword (with gray background and info icon)
 			- select scanning scope: Scan in the whole project
-	- also install source code, it may help in future for debugging or better understanding
 	- Dacă dai peste o eroare la compilarea unui proiect cu instrucțiunea 'QT += webkitwidgets' (care folosește QWebView în designer) care spune că lipsesc anumite fișiere biblioteci (can't find -lXXX), cauta XXX pe packages.ubuntu.com si gasesti exact pachetele care trebuie instalate.
 	- Qt Creator Options
 		- Text Editor -> Behavior -> Show help tooltips using keyboard shortcut (alt) -> Check
@@ -301,38 +296,42 @@ BUG: https://bugs.launchpad.net/ubuntu/+source/gnome-settings-daemon/+bug/123245
 			- in the help window add a bookmarks section
 				- when un/reinstalling save these bookmarks
 
-- Install FreeMind (also Anki, maybe) for learning:
-	- FreeMind - if the latest version is not in the Software Center, from this page: http://freemind.sourceforge.net/wiki/index.php/Download , download this: OS: Any | binaries for any operating system - max | All-inclusive version
-		- put the contents of the archive in ~/freemind, then run the program using freemind.sh or lib/freemind.jar in that folder (but run 'chmod u+x freemind.sh' before)
-	- bug: with FreeMind 1.0.0 on Ubuntu 13.10 x64 I couldn't open a file created with FreeMind 0.9. I stayed with the old version available in the Software Center
-	- bug: text does not look clear after first zoom
-- Or instead of FreeMind install XMind (http://www.xmind.net/) - open-source, prettier, supports import/export from/to FreeMind format
-	- FreeMind exports HTML, interactive HTML, flash, PNG, JPEG, TWiki, Java applet
-	- XMind (the free version) exports HTML, text, image, FreeMind
-	- In XMind sometimes I can't open the menus in the menu bar using the mouse (it's a problem related to the Unity global menu) but I can press Alt+F then use the arrow keys to navigate in and between the menus. Maybe the next version of ubuntu (14.04) will allow me to deactivate the global menu just in XMind.
-	- bug: only at zoom 100% the text is not cut
-	- Preferences -> General -> Startup -> When XMind starts: -> Open maps unclosed last time.
-	- automatically checks for updates
-	- does not support rich text nodes and moving the mind map view uses the middle mouse button which is harder to press
-- http://alternativeto.net/software/freemind/
+- Install mind-mapping software:
+	- Install FreeMind (also Anki, maybe) for learning:
+		- FreeMind - if the latest version is not in the Software Center, from this page: http://freemind.sourceforge.net/wiki/index.php/Download download this: OS: „Any | binaries for any operating system - max | All-inclusive” version
+			- put the contents of the archive in ~/freemind, then run the program using `freemind.sh` or lib/freemind.jar in that folder (but run `chmod u+x freemind.sh` before)
+		- bug: with FreeMind 1.0.0 on Ubuntu 13.10 x64 I couldn't open a file created with FreeMind 0.9. I stayed with the old version available in the Software Center
+		- bug: text does not look clear after first zoom
+	- Or instead of FreeMind install XMind (http://www.xmind.net/)
+		- Features:
+			- open-source, prettier, supports import/export from/to FreeMind format
+			- FreeMind exports HTML, interactive HTML, flash, PNG, JPEG, TWiki, Java applet
+			- XMind (the free version) exports HTML, text, image, FreeMind
+			- automatically checks for updates
+		- BUG: In XMind sometimes I can't open the menus in the menu bar using the mouse (it's a problem related to the Unity global menu) but I can press Alt+F then use the arrow keys to navigate in and between the menus. Maybe the next version of ubuntu (14.04) will allow me to deactivate the global menu just in XMind.
+		- BUG: only at zoom 100% the text is not cut
+		- BUG: does not support rich text nodes and moving the mind map view uses the middle mouse button which is harder to press
+		- After install:
+			- Preferences -> General -> Startup -> When XMind starts: -> Open maps unclosed last time.
+	- http://alternativeto.net/software/freemind/
 
 - If the clock in the top panel happens to disappear, run this command:
     `killall unity-panel-service`
-    source: http://ubuntuforums.org/showthread.php?t=2181988
-        google search: ubuntu 13.10 the clock disappeared
+    - source: http://ubuntuforums.org/showthread.php?t=2181988
+    - google search: "ubuntu 13.10 the clock disappeared"
 
 - Rulez comanda `sudo apt-get install dos2unix` în Terminal, pentru a putea folosi mai târziu comenzile unix2dos și dos2unix pentru convertirea caracterelor de sfârșit de rând (de exemplu, când pun un fișier text în Dropbox/Partajate).
 
 - Pentru opțiunea „Deschide în terminal” în meniul contextual din Nautilus (inclusiv în spațiul de lucru), rulez:
-	sudo apt-get install nautilus-open-terminal
-	nautilus -q # pentru închiderea tuturor proceselor nautilus
-	nautilus -n # în Alt+F2, pentru pornirea procesului nautilus pentru spațiul de lucru
+    ```
+	$ sudo apt-get install nautilus-open-terminal
+	$ nautilus -q # pentru închiderea tuturor proceselor nautilus
+	$ nautilus -n # în Alt+F2, pentru pornirea procesului nautilus pentru spațiul de lucru
+	```
 
-- Pentru comanda 'tree', rulez:
-	sudo apt-get install tree
+- Pentru comanda 'tree', rulez: `sudo apt-get install tree`.
 
-- Pentru analizarea performanței C++ în Qt Creator
-	sudo apt-get install valgrind
+- Pentru analizarea performanței C++ în Qt Creator rulez: `sudo apt-get install valgrind`.
 
 - Pentru aflarea temperaturii CPU: http://askubuntu.com/questions/15832/how-do-i-get-the-cpu-temperature
 	sudo apt-get install lm-sensors
