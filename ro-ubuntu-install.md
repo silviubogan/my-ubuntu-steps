@@ -99,26 +99,31 @@
 				- BUG: less features
 				- I'm not sure how can a Python app be secure enough to handle password management
 
+	- Options > System:
+		- Allow multiple instances > False;
+		- Put icon in system tray > False.
+
 - Probleme cu funcția de Sleep și Lock
 	- „artefacte vizuale” după revenire și sistem nefuncțional
-		Încearcă un driver proprietar în loc de nouveau (open source). Dacă 'Toate configurațiile -> Software & Updates -> Additional Drivers' nu merge încearcă cu 'sudo apt-get install NAME' unde NAME e de exemplu 'nvidia-319-updates'.
+		- Încearcă un driver proprietar în loc de nouveau (open source). Dacă 'Toate configurațiile -> Software & Updates -> Additional Drivers' nu merge încearcă cu 'sudo apt-get install NAME' unde NAME e de exemplu 'nvidia-319-updates'.
 		Apoi, pentru Sleep poate va fi necesar să folosești butonul fizic de pornire a PC-ului ca să trezești calculatorul. Dacă Internetul nu merge după trezire din Sleep, rulează "sudo dhclient eth0" (vezi http://askubuntu.com/a/12179/29733) sau și mai bine, `sudo service network-manager restart` care actualizează și indicatorul de conexiune la Internet al Unity arătând că conexiunea este stabilită (http://askubuntu.com/a/251946/29733). Pentru a realiza asta în mod automat (comportamentul așteptat) vezi următoarele pagini:
-			https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/1130571 (My Bug, I think)
-			- linked walkaround: http://www.webupd8.org/2013/01/fix-wireless-or-wired-network-not.html
+			- https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/1130571 (My Bug, I think)
+				- linked walkaround: http://www.webupd8.org/2013/01/fix-wireless-or-wired-network-not.html
 				- not working
-			http://ubuntuforums.org/showthread.php?t=1401142
-			http://askubuntu.com/questions/89744/suspending-computer-and-maintaining-internet-connection?rq=1
-			http://askubuntu.com/questions/190340/is-there-a-way-to-suspend-without-turning-off-network
-			http://askubuntu.com/questions/216110/how-do-i-find-what-kernel-module-is-behind-a-network-interface
-			http://askubuntu.com/questions/279584/suspend-resume-failure
-			http://askubuntu.com/questions/104710/how-to-restore-ethernet-connection
-			http://forum.mandriva.com/en/viewtopic.php?t=118414
-			https://help.ubuntu.com/community/NvNetInstallation
-		https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/274405
-		Also see the 'lsmod' command where you can see forcedeth listed.
-		Associated command: 'sudo gedit /etc/pm/config.d/unload_modules'
-    **Walkaround** - In `/etc/pm/sleep.d`, add a text file ~`broken_network_after_resume_walkaround` and run: `sudo chmod +x broken_network_after_resume_walkaround` then it has those permissions: (-rwxr-xr-x). Contents of this file:
-            #!/bin/bash
+				- http://ubuntuforums.org/showthread.php?t=1401142
+				- http://askubuntu.com/questions/89744/suspending-computer-and-maintaining-internet-connection?rq=1
+				- http://askubuntu.com/questions/190340/is-there-a-way-to-suspend-without-turning-off-network
+				- http://askubuntu.com/questions/216110/how-do-i-find-what-kernel-module-is-behind-a-network-interface
+				- http://askubuntu.com/questions/279584/suspend-resume-failure
+				- http://askubuntu.com/questions/104710/how-to-restore-ethernet-connection
+				- http://forum.mandriva.com/en/viewtopic.php?t=118414
+				- https://help.ubuntu.com/community/NvNetInstallation
+			- https://bugs.launchpad.net/ubuntu/+source/network-manager/+bug/274405
+			- Also see the 'lsmod' command where you can see forcedeth listed.
+			- Associated command: `sudo gedit /etc/pm/config.d/unload_modules`
+    	- **Walkaround** - In `/etc/pm/sleep.d`, add a text file ~`broken_network_after_resume_walkaround` and run: `sudo chmod +x broken_network_after_resume_walkaround` then it has those permissions: (-rwxr-xr-x). Contents of this file:
+            ```
+			#!/bin/bash
             # inspired from http://askubuntu.com/a/209855/29733
             case "$1" in
                 hibernate|suspend)
@@ -129,42 +134,54 @@
                     sudo service network-manager restart
                     ;;
             esac
-        To take effect there is no need to do anything else: no restart, no other command to run.
+			```
+        	To take effect there is no need to do anything else: no restart, no other command to run.
 
-- mkdir ~/bin
-	- In ~/.bashrc add the following line:
-		export PATH=/path/to/dir:$PATH
-	- To update the PATH of an existing terminal session:
-		cd ~
-		source .bashrc
-	other ways and details: http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path
+- `mkdir ~/bin`
+	- Add `~/bin` to `$PATH`.
+		- To add a new directory to `$PATH`, in `~/.bashrc` add the following line:
+			```
+			export PATH=/path/to/dir:$PATH
+			```
+			- Other ways and details: http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path.
+		- To update the `$PATH` of an existing terminal session:
+			```
+			cd ~
+			source .bashrc
+			```
 
-- Install node.js
-	- For a recent version of nodejs and a recent version of npm (>1.3) which is needed for 'grunt' 4.1 from the npm registry which is to be installed once in each of the project folders using Grunt.js, run these ( https://github.com/IonicaBizau/dotfiles/blob/master/apps/node.sh ) (this PPA is not updated anymore, no versions for Ubuntu Vivid Vervet 15.04, bower npm package requires a newer version of nodejs than available in this PPA):
+- Install Node.js
+	- For a recent version of nodejs and a recent version of npm (>1.3) which is needed for 'grunt' 4.1 from the npm registry which is to be installed once in each of the project folders using Grunt.js, run these lines: taken from https://github.com/IonicaBizau/dotfiles/blob/master/apps/node.sh (another source: https://github.com/gruntjs/grunt/pull/886#issuecomment-27914161):
+		```
 		sudo add-apt-repository -y ppa:chris-lea/node.js
 		sudo apt-get update
 		sudo apt-get install nodejs
-		(link: https://github.com/gruntjs/grunt/pull/886#issuecomment-27914161)
+		```
+		- Update: this PPA is not updated anymore, no versions for Ubuntu Vivid Vervet 15.04, bower npm package requires a newer version of nodejs than available in this PPA.
         - Alternatives:
-            - https://github.com/nodesource/distributions (tested) (found on this page: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager )
-            - install nodejs with nvm, like does Ionică, and he has the latest node, v4.0.0.
-	- Because the executable name is the unusual and pretty unsuported (by grunt, for example) 'nodejs':
+            - https://github.com/nodesource/distributions (tested) (found on this page: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager)
+            - Install nodejs with nvm (advice from Ionică Bizău) so I have the latest Node.js version: v4.0.0.
+	- Because the executable name is the unusual and pretty unsupported (by grunt, for example) 'nodejs':
+		```
 		ln -s /usr/bin/nodejs ~/bin/node
+		```
         - https://github.com/IonicaBizau/dotfiles#npm-config for configuring npm to globally install without sudo
-        - Install npm packages: share-term, jsdoc.
-- Install git, restore .ssh data
+	- Install npm packages: share-term, jsdoc.
+
+- Install git, restore .ssh data.
 - Install npm
-	- Then install grunt npm package: sudo npm install -g grunt-cli
+	- Then install the `grunt` npm package: `sudo npm install -g grunt-cli`.
 
 - Install 'gufw' (firewall GUI) then enable the firewall by using it.
 	- note: after reboot the firewall is still enabled.
 
 - BUG: before logging in, the order of the displays is inverted, I've repaired that in Unity using the settings in Afișaje, after starting to use proprietary NVIDIA driver.
 
-- Install Sublime Text (subl at Terminal): http://www.sublimetext.com/ . (As of
+- Install Sublime Text (subl command in Terminal): http://www.sublimetext.com/.
+	- As of
   30.07.2017 there is no .deb package available, but there are a list of
   terminal commands with which a new apt repo can be registered and from it
-  Sublime Text 3 can be installed).
+  Sublime Text 3 can be installed.
 
 - Install redshift/f.lux (things below were written about redshift 1.7)
 	- BUG: gtk-redshift not showing any UI: https://bugs.launchpad.net/ubuntu/+source/redshift/+bug/1244880
@@ -172,71 +189,71 @@
 	- possible bug: I can start more instances of gtk-redshift and this can be problematic because of the mixing animations, for example. After a restart, the problems seem to disappear anyway.
 	- Note: redshift 1.8 was released not with gtk-redshift but with redshift-gtk 1.8; it is not yet available in Ubuntu's official software sources (maybe check to see if the package with the new name appeared there separated from the old name, not as an upgrade to the old version - improbable).
 	- If redshift GUI is still not working, try using f.lux, but check if you still encounter these bugs:
-		https://github.com/Kilian/f.lux-indicator-applet/issues/32
-		https://github.com/Kilian/f.lux-indicator-applet/issues/23
+		- https://github.com/Kilian/f.lux-indicator-applet/issues/32
+		- https://github.com/Kilian/f.lux-indicator-applet/issues/23
 	- set 'gtk-redshift' to run at startup (Type ~"Aplicații pornite după autentificare" or "gnome session" in Dash) sau nu că acum știu că sănătatea ochilor mei nu depinde atât de mult de asta și lumina albastră poate fi mai plăcută decât cea roșie chiar și noaptea
 		- bug: This doesn't work. I have to manually start gtk-redshift at startup, from the terminal or from the launcher.
 			- soluție luată de pe http://askubuntu.com/a/194582:
 				- legătură la bug „oficial”: https://bugs.launchpad.net/redshift/+bug/868904
 				- în "Aplicații pornite după autentificare" nu pun doar gtk-redshift ci "gtk-redshift -l LAT:LONG" sau "gtk-redshift -l 46.ABC:22.DEF" unde ABC și DEF sunt zecimi, sutimi și miimi din coordonatele geografice, necesare pt. aflarea orei răsăritului și a orei apusului Soarelui de către program în mod automat în rest.
 
-- As an alternative for the not-working-in-wine evernote 5, try https://github.com/nvbn/everpad (not working now)
+- As an alternative for the not-working-in-wine Evernote 5, try https://github.com/nvbn/everpad (not working now).
 	- BUG: after uninstalling Evernote 5.0.3 in Wine, the icon does not disappear from Unity Dash.
-		Links: http://askubuntu.com/questions/339763/cant-remove-the-icon-of-a-wine-application-from-unity-dash-home
-		Walkaround: delete the Evernote.desktop file, and also remove it from Trash (Unity Dash seems to search the Trash
-		for .desktop files too! - bug)
+		- Links:
+			- http://askubuntu.com/questions/339763/cant-remove-the-icon-of-a-wine-application-from-unity-dash-home
+				- Walkaround: delete the Evernote.desktop file, and also remove it from Trash (Unity Dash seems to search the Trash for .desktop files too! - bug to report).
 	- BUG: everpad crashes and it's indicator menu is not working:
-		https://github.com/nvbn/everpad/issues/371
-		https://github.com/nvbn/everpad/issues/369
+		- https://github.com/nvbn/everpad/issues/371;
+		- https://github.com/nvbn/everpad/issues/369.
 
-- În gedit
-	- Nu ar avea rost să configurez gedit, căci folosesc Sublime Text, dar uneori mai folosesc și gedit.
-	- gedit -> Editare -> Preferințe -> Show line numbers
+- În Gedit:
+	- Nu ar avea rost să configurez gedit, căci folosesc Sublime Text, dar uneori mai folosesc și gedit;
+	- gedit -> Editare -> Preferințe -> Show line numbers;
 	- etc.
 
-BUG: on startup and probably not only, the login screen has displays in inverted order, even after doing the configuration that worked for Unity
-BUG: ugly boot animation/image and shut down animation/image... it's just a big monospace 'Ubuntu' with small resolution... plus log/debug strings starting on the same line.. I am not sure of this, but this may be because the nvidia-319-updates is not marked as tested, like the nvidia-319 driver. Maybe this causes other problems I have too.
+- BUG: on startup and probably not only, the login screen has displays in inverted order, even after doing the configuration that worked for Unity.
+- BUG: ugly boot animation/image and shut down animation/image... it's just a big monospace 'Ubuntu' with small resolution... plus log/debug strings starting on the same line... I am not sure of this, but this may be because the `nvidia-319-updates` is not marked as tested, like the `nvidia-319` driver. Maybe this causes other problems I have too.
 
-- Dropbox
-	- Fixed bug: https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1242413 (fix released as an update)
-		Walkaround:
-			To make the Dropbox indicator appear, install libappindicator1
-			See: http://askubuntu.com/a/361281/29733 and http://askubuntu.com/questions/358913/no-dropbox-icon-in-ubuntu-13-10
-			and https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1211066:
-				Logging in and out in unnecessary. Instead, do
-					dropbox stop
-					dropbox start
-	- Dropbox indicator -> Preferences... -> Bandwidth -> Upload rate -> Don't limit
+- Instalează și configurează Dropbox
+	- Solved bug: https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1242413 („fix eliberat” ca o actualizare)
+		- Now-unneeded walkaround: to make the Dropbox indicator appear, install `libappindicator1` with apt. See: http://askubuntu.com/a/361281/29733 and http://askubuntu.com/questions/358913/no-dropbox-icon-in-ubuntu-13-10 and https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1211066:
+			- Logging in and out in unnecessary. Instead, do
+				```
+				$ dropbox stop
+				$ dropbox start
+				```
+	- Dropbox indicator -> Preferences... -> Bandwidth -> Upload rate -> Don't limit.
 
-I could try this answer to bring back the app indicators: http://askubuntu.com/questions/362135/how-to-re-enable-tray-icons-for-applications-in-ubuntu-13-10 (Dropbox is already visible, I would need that only for redshift/f.lux currently, but later probably for pidgin and others..). Search link: http://askubuntu.com/search?q=13.10+indicators
+- I could try this answer to bring back the app indicators: http://askubuntu.com/questions/362135/how-to-re-enable-tray-icons-for-applications-in-ubuntu-13-10 (Dropbox is already visible, I would need that only for redshift/f.lux currently, but later probably for pidgin and others...).
+	- Search link: http://askubuntu.com/search?q=13.10+indicators.
 
-- Install ubuntu-tweak after adding this ppa: https://launchpad.net/~tualatrix/+archive/ppa ? only if I start using some option in it.
-
-PasswordSafe > Options > System > Allow multiple instances > False
-								> Put icon in system tray > False
+- Install ubuntu-tweak after adding this PPA: https://launchpad.net/~tualatrix/+archive/ppa (only if I start using some option in it).
 
 - Install VIM
-    - Copy .vimrc from my dotfiles GitHub repo, install Vimium (see the readme
+    - Copy `.vimrc` file from my `dotfiles` GitHub repo, install Vimium (see the readme
       file in their GitHub repository) (- here I think I wanted to write Vundle
       instead of Vimium) and then install all the plugins in the
-      .vimrc file with :PluginInstall.
+      `.vimrc` file with `:PluginInstall`.
+
 - Install git
-	Removing --global from the following git-config commands only sets the option for the repository in the current directory.
+	- Removing --global from the following git-config commands only sets the option for the repository in the current directory.
 
-	git config --global color.ui (in git 1.8.4 this is the default, but it's not in Ubuntu's official software sources yet)
-	    - But it can be installed, and it's stable:
-	        https://launchpad.net/~git-core/+archive/ppa
-	        Add ppa:git-core/ppa to your system's Software Sources then check for updates and install the available updates.
-
+		```
+		git config --global color.ui
+		```
+		In git 1.8.4 this is the default, but it's not in Ubuntu's official software sources yet.
+		- But it can be installed, and it's stable: add `ppa:git-core/ppa` (https://launchpad.net/~git-core/+archive/ppa) to your system's Software Sources then check for updates and install the available updates.
+	```
 	git config --global core.editor "vim"
-		or see http://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits
-
+	```
+	- or see http://stackoverflow.com/questions/2596805/how-do-i-make-git-use-the-editor-of-my-choice-for-commits
+	```
 	git config --global user.email "..."
 	git config --global user.name "..."
 	git config --global push.default simple
-		(otherwise, 'git push' will print useless things about a future change in the default behavior of running 'git push'. The current behavior is 'matching' which means pushing all the branches to the remote. In git 2.0, the behavior will be 'simple' which means pushing the active branch to the correspondant upstream branch if they have the same name).
-
-	When making the first push after setting up the ssh, checking the checkbox in the password dialog will make it never appear again and the pushes will just work.
+	```
+	- about the last line: otherwise, 'git push' will print useless things about a future change in the default behavior of running 'git push'. The current behavior is 'matching' which means pushing all the branches to the remote. In git 2.0, the behavior will be 'simple' which means pushing the active branch to the correspondant upstream branch if they have the same name.
+	- When making the first push after setting up the ssh, checking the checkbox in the password dialog will make it never appear again and the pushes will just work.
 
 - Install nixnote, because everpad doesn't work currently (3 nov 2013).
 http://ubuntuhandbook.org/index.php/2013/07/install-nixnote-ubuntu-13-10-linux-mint/
