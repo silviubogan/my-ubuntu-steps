@@ -1,4 +1,5 @@
 # My Ubuntu Steps
+[![Support me on Patreon][badge_patreon]][patreon]
 
 Tested but somewhat not enough updated step by step instructions for a customised configuration of a new Ubuntu install, built for
 myself, also presenting bugs and issues encountered on the way. Formatting is pretty bad.
@@ -45,3 +46,5 @@ This project is licensed under the terms of the MIT license.
   [4]: en-ubuntu-tricks.md
   [5]: http://lumea-lui-silviu.blogspot.ro
   [6]: https://patreon.com/SilviuBogan
+  [badge_patreon]: https://img.shields.io/badge/Patreon-support_me_here-orange.svg
+  [patreon]: https://www.patreon.com/SilviuBogan
