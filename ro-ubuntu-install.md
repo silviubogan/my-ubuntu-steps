@@ -185,19 +185,20 @@
   terminal commands with which a new apt repo can be registered and from it
   Sublime Text 3 can be installed.
 
-- Install redshift/f.lux (things below were written about redshift 1.7)
-	- BUG: gtk-redshift not showing any UI: https://bugs.launchpad.net/ubuntu/+source/redshift/+bug/1244880
-		- walkaround: `sudo apt-get install python-appindicator` as in comment #4 from the link above - this package might solve other missing indicators.
-	- possible bug: I can start more instances of gtk-redshift and this can be problematic because of the mixing animations, for example. After a restart, the problems seem to disappear anyway.
-	- Note: redshift 1.8 was released not with gtk-redshift but with redshift-gtk 1.8; it is not yet available in Ubuntu's official software sources (maybe check to see if the package with the new name appeared there separated from the old name, not as an upgrade to the old version - improbable).
-	- If redshift GUI is still not working, try using f.lux, but check if you still encounter these bugs:
-		- https://github.com/Kilian/f.lux-indicator-applet/issues/32
-		- https://github.com/Kilian/f.lux-indicator-applet/issues/23
-	- set 'gtk-redshift' to run at startup (Type ~"Aplicații pornite după autentificare" or "gnome session" in Dash) sau nu că acum știu că sănătatea ochilor mei nu depinde atât de mult de asta și lumina albastră poate fi mai plăcută decât cea roșie chiar și noaptea
-		- bug: This doesn't work. I have to manually start gtk-redshift at startup, from the terminal or from the launcher.
-			- soluție luată de pe http://askubuntu.com/a/194582:
-				- legătură la bug „oficial”: https://bugs.launchpad.net/redshift/+bug/868904
-				- în "Aplicații pornite după autentificare" nu pun doar gtk-redshift ci "gtk-redshift -l LAT:LONG" sau "gtk-redshift -l 46.ABC:22.DEF" unde ABC și DEF sunt zecimi, sutimi și miimi din coordonatele geografice, necesare pt. aflarea orei răsăritului și a orei apusului Soarelui de către program în mod automat în rest.
+- Install redshift (from Ubuntu Software) or f.lux
+	- things below were written about redshift 1.7
+		- BUG: gtk-redshift not showing any UI: https://bugs.launchpad.net/ubuntu/+source/redshift/+bug/1244880
+			- walkaround: `sudo apt-get install python-appindicator` as in comment #4 from the link above - this package might solve other missing indicators.
+		- possible bug: I can start more instances of gtk-redshift and this can be problematic because of the mixing animations, for example. After a restart, the problems seem to disappear anyway.
+		- Note: redshift 1.8 was released not with gtk-redshift but with redshift-gtk 1.8; it is not yet available in Ubuntu's official software sources (maybe check to see if the package with the new name appeared there separated from the old name, not as an upgrade to the old version - improbable).
+		- If redshift GUI is still not working, try using f.lux, but check if you still encounter these bugs:
+			- https://github.com/Kilian/f.lux-indicator-applet/issues/32
+			- https://github.com/Kilian/f.lux-indicator-applet/issues/23
+		- set 'gtk-redshift' to run at startup (Type ~"Aplicații pornite după autentificare" or "gnome session" in Dash) sau nu că acum știu că sănătatea ochilor mei nu depinde atât de mult de asta și lumina albastră poate fi mai plăcută decât cea roșie chiar și noaptea
+			- bug: This doesn't work. I have to manually start gtk-redshift at startup, from the terminal or from the launcher.
+				- soluție luată de pe http://askubuntu.com/a/194582:
+					- legătură la bug „oficial”: https://bugs.launchpad.net/redshift/+bug/868904
+					- în "Aplicații pornite după autentificare" nu pun doar gtk-redshift ci "gtk-redshift -l LAT:LONG" sau "gtk-redshift -l 46.ABC:22.DEF" unde ABC și DEF sunt zecimi, sutimi și miimi din coordonatele geografice, necesare pt. aflarea orei răsăritului și a orei apusului Soarelui de către program în mod automat în rest.
 
 - As an alternative for the not-working-in-wine Evernote 5, try https://github.com/nvbn/everpad (not working now).
 	- BUG: after uninstalling Evernote 5.0.3 in Wine, the icon does not disappear from Unity Dash.
