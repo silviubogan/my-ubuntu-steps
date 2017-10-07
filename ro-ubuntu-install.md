@@ -429,6 +429,12 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
 	$ git config --global credential.helper 'cache --timeout=3600' # Set the cache to timeout after 1 hour (setting is in seconds)
 	```
 
+- Setez în Configurări de sistem > Hardware > Tastatură > Scurtături, scurtătura `Ctrl+Shift+Esc` comenzii `gnome-system-monitor` (pentru când SO nu mai funcționează și trebuie să forțez terminarea unui proces).
+	- BUG: în Ubuntu 17.04, chiar și după o repornire a calculatorului (laptopului), noua combinație de taste nu funcționează.
+
+- Ca alternativă la Paint.NET pentru Ubuntu, folosesc Pinta:
+	- https://pinta-project.com/pintaproject/pinta/.
+
 - Instalez actualizări.
 - La final rulez și:
 	```
