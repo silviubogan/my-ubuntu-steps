@@ -260,6 +260,18 @@
 	```
 	- about the last line: otherwise, 'git push' will print useless things about a future change in the default behavior of running 'git push'. The current behavior is 'matching' which means pushing all the branches to the remote. In git 2.0, the behavior will be 'simple' which means pushing the active branch to the correspondant upstream branch if they have the same name.
 	- When making the first push after setting up the ssh, checking the checkbox in the password dialog will make it never appear again and the pushes will just work.
+	- Toate setările globale Git pe care le folosesc:
+		```
+		$ git config --global -l
+		user.email=silviubogan@gmail.com
+		user.name=Silviu Bogan
+		core.editor=vim
+		push.default=simple
+		alias.cl=log --graph --color --decorate --all --date=relative
+		credential.helper=cache --timeout=3600
+		```
+	`alias.cl` este deosebit de folositor: în directorul unui depozit rulez `git cl` și istoria depozitului este afișată complet, cu mai multe detalii și colorat.
+	`credential.helper` este recomandat de GitHub (HTTPS e recomandat în loc de SSH).
 
 - Install nixnote, because everpad doesn't work currently (3 nov 2013): http://ubuntuhandbook.org/index.php/2013/07/install-nixnote-ubuntu-13-10-linux-mint/
 	- everpad works (5 nov 2013), install it (https://github.com/nvbn/everpad), enable 'Start with system' setting, but it has big bugs:
