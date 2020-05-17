@@ -135,7 +135,7 @@
 - `mkdir ~/bin` then add `~/bin` to `$PATH` using *fish*:
   - create or modify the file `~/.config/fish/config.fish`:
     - append
-      - `set PATH "$PATH:/home/silviu/bin"`
+      - `set PATH "$PATH:/home/silviu/bin:/home/silviu/opt/todo.txt-cli/bin"`
 
 - Install Node.js
 	- For a recent version of nodejs and a recent version of npm (>1.3) which is needed for 'grunt' 4.1 from the npm registry which is to be installed once in each of the project folders using Grunt.js, run these lines: taken from https://github.com/IonicaBizau/dotfiles/blob/master/apps/node.sh (another source: https://github.com/gruntjs/grunt/pull/886#issuecomment-27914161):
@@ -387,7 +387,7 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
     2. Go to Mouse & Touchpad
     3. Slide the “Natural Scrolling” toggle to on
 
-- Install Telegram, Tilix, Flameshot, Neofetch, cryfs
+- Install Telegram, Tilix, Flameshot, Neofetch, cryfs, todo.txt-cli
 - `sudo snap install cawbird`
 
 - `/.bashrc` contents until I fully switch to fish:
