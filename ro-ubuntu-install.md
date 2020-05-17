@@ -390,7 +390,7 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
     2. Go to Mouse & Touchpad
     3. Slide the “Natural Scrolling” toggle to on
 
-- Install Telegram, Tilix, Flameshot, Neofetch, cryfs, todo.txt-cli
+- Install Telegram, Flameshot, Neofetch, cryfs, todo.txt-cli
 - `sudo snap install cawbird`
 
 - `/.bashrc` contents until I fully switch to fish:
@@ -415,6 +415,10 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
 	```
 	$ sudo apt-get autoremove
 	```
+
+- Install Tilix
+  - Uncheck `Preferences > Global > Close window when last session is closed`
+
 
 ## La reinstalarea Ubuntu
 Fac copie de siguranță la depozitele apt din Surse Software, inclusiv cele dezactivate care s-ar putea să înceapă să funcționeze din nou.
