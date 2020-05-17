@@ -47,7 +47,7 @@
 	- If some extensions don't work, do the following to update chromium-browser to the latest version
 		- BUG: chromium-browser is at old version 29 in the official repositories. Walkaround:
 			- http://askubuntu.com/questions/89058/how-to-install-the-latest-stable-version-of-chromium
-			- http://askubuntu.com/questions/317201/how-do-i-install-the-latest-version-of-chromium-in-ubuntu-13-10	
+			- http://askubuntu.com/questions/317201/how-do-i-install-the-latest-version-of-chromium-in-ubuntu-13-10
 			- http://askubuntu.com/a/368908/29733
 				- `$ sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa` then check for updates
 
@@ -139,18 +139,10 @@
 			```
         	To take effect there is no need to do anything else: no restart, no other command to run.
 
-- `mkdir ~/bin`
-	- Add `~/bin` to `$PATH`.
-		- To add a new directory to `$PATH`, in `~/.bashrc` add the following line:
-			```
-			export PATH=/path/to/dir:$PATH
-			```
-			- Other ways and details: http://askubuntu.com/questions/60218/how-to-add-a-directory-to-my-path.
-		- To update the `$PATH` of an existing terminal session:
-			```
-			cd ~
-			source .bashrc
-			```
+- `mkdir ~/bin` then add `~/bin` to `$PATH` using *fish*:
+  - create or modify the file `~/.config/fish/config.fish`:
+    - append
+      - `set PATH "$PATH:/home/silviu/bin"`
 
 - Install Node.js
 	- For a recent version of nodejs and a recent version of npm (>1.3) which is needed for 'grunt' 4.1 from the npm registry which is to be installed once in each of the project folders using Grunt.js, run these lines: taken from https://github.com/IonicaBizau/dotfiles/blob/master/apps/node.sh (another source: https://github.com/gruntjs/grunt/pull/886#issuecomment-27914161):
@@ -179,26 +171,9 @@
 
 - BUG: before logging in, the order of the displays is inverted, I've repaired that in Unity using the settings in Afișaje, after starting to use proprietary NVIDIA driver.
 
-- Install Sublime Text (subl command in Terminal): http://www.sublimetext.com/.
-	- As of
-  30.07.2017 there is no .deb package available, but there are a list of
-  terminal commands with which a new apt repo can be registered and from it
-  Sublime Text 3 can be installed.
+- Install Visual Studio Code from https://code.visualstudio.com/ (they have .deb packages).
 
-- Install redshift (from Ubuntu Software) or f.lux
-	- things below were written about redshift 1.7
-		- BUG: gtk-redshift not showing any UI: https://bugs.launchpad.net/ubuntu/+source/redshift/+bug/1244880
-			- walkaround: `sudo apt-get install python-appindicator` as in comment #4 from the link above - this package might solve other missing indicators.
-		- possible bug: I can start more instances of gtk-redshift and this can be problematic because of the mixing animations, for example. After a restart, the problems seem to disappear anyway.
-		- Note: redshift 1.8 was released not with gtk-redshift but with redshift-gtk 1.8; it is not yet available in Ubuntu's official software sources (maybe check to see if the package with the new name appeared there separated from the old name, not as an upgrade to the old version - improbable).
-		- If redshift GUI is still not working, try using f.lux, but check if you still encounter these bugs:
-			- https://github.com/Kilian/f.lux-indicator-applet/issues/32
-			- https://github.com/Kilian/f.lux-indicator-applet/issues/23
-		- set 'gtk-redshift' to run at startup (Type ~"Aplicații pornite după autentificare" or "gnome session" in Dash) sau nu că acum știu că sănătatea ochilor mei nu depinde atât de mult de asta și lumina albastră poate fi mai plăcută decât cea roșie chiar și noaptea
-			- bug: This doesn't work. I have to manually start gtk-redshift at startup, from the terminal or from the launcher.
-				- soluție luată de pe http://askubuntu.com/a/194582:
-					- legătură la bug „oficial”: https://bugs.launchpad.net/redshift/+bug/868904
-					- în "Aplicații pornite după autentificare" nu pun doar gtk-redshift ci "gtk-redshift -l LAT:LONG" sau "gtk-redshift -l 46.ABC:22.DEF" unde ABC și DEF sunt zecimi, sutimi și miimi din coordonatele geografice, necesare pt. aflarea orei răsăritului și a orei apusului Soarelui de către program în mod automat în rest.
+- Enable night light mode („Lumină nocturnă”) in System Settings.
 
 - As an alternative for the not-working-in-wine Evernote 5, try https://github.com/nvbn/everpad (not working now).
 	- BUG: after uninstalling Evernote 5.0.3 in Wine, the icon does not disappear from Unity Dash.
@@ -210,21 +185,9 @@
 		- https://github.com/nvbn/everpad/issues/369.
 
 - În Gedit:
-	- Nu ar avea rost să configurez gedit, căci folosesc Sublime Text, dar uneori mai folosesc și gedit;
-	- gedit -> Editare -> Preferințe -> Show line numbers;
-	- etc.
-
-- BUG: on startup and probably not only, the login screen has displays in inverted order, even after doing the configuration that worked for Unity.
-- BUG: ugly boot animation/image and shut down animation/image... it's just a big monospace 'Ubuntu' with small resolution... plus log/debug strings starting on the same line... I am not sure of this, but this may be because the `nvidia-319-updates` is not marked as tested, like the `nvidia-319` driver. Maybe this causes other problems I have too.
+  - Install the package with the name aproximatively `gedit-plugins` and configure the newly installed plugins, maybe get inspiration from them to have new functionalities in VS Code via plugins.
 
 - Instalează și configurează Dropbox
-	- Solved bug: https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1242413 („fix eliberat” ca o actualizare)
-		- Now-unneeded walkaround: to make the Dropbox indicator appear, install `libappindicator1` with apt. See: http://askubuntu.com/a/361281/29733 and http://askubuntu.com/questions/358913/no-dropbox-icon-in-ubuntu-13-10 and https://bugs.launchpad.net/ubuntu/+source/nautilus-dropbox/+bug/1211066:
-			- Logging in and out in unnecessary. Instead, do
-				```
-				$ dropbox stop
-				$ dropbox start
-				```
 	- Dropbox indicator -> Preferences... -> Bandwidth -> Upload rate -> Don't limit.
 
 - I could try this answer to bring back the app indicators: http://askubuntu.com/questions/362135/how-to-re-enable-tray-icons-for-applications-in-ubuntu-13-10 (Dropbox is already visible, I would need that only for redshift/f.lux currently, but later probably for pidgin and others...).
@@ -265,9 +228,14 @@
 		$ git config --global -l
 		user.email=silviubogan@gmail.com
 		user.name=Silviu Bogan
-		core.editor=vim
-		push.default=simple
+		alias.co=checkout
+		alias.br=branch
+		alias.ci=commit
+		alias.st=status
 		alias.cl=log --graph --color --decorate --all --date=relative
+		core.autocrlf=input
+		core.editor=code --wait
+		core.filemode=false
 		credential.helper=cache --timeout=3600
 		```
 	`alias.cl` este deosebit de folositor: în directorul unui depozit rulez `git cl` și istoria depozitului este afișată complet, cu mai multe detalii și colorat.
@@ -282,7 +250,7 @@
 - I had a situation in which no sound would work, and not only this, but the apps which should be playing sounds (YouTube players, local music app) were broken, the playback cursor remained at the beginning of the song.
 I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in terminal, but still no sound. And then I rebooted. The sound worked again. Links:
 	- http://askubuntu.com/search?q=no+sound+after+resume
-	- http://askubuntu.com/questions/190146/no-sound-after-suspend-resume 
+	- http://askubuntu.com/questions/190146/no-sound-after-suspend-resume
 
 - BUG: one or two times, the user menu (with that 'settings'-like icon - toothed wheel) disappeared from the top bar: http://askubuntu.com/questions/201263/shutdown-and-user-button-missing-in-panel.
 
@@ -294,25 +262,6 @@ I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in 
 
 - Install https://github.com/k4rthik/git-cal (it's really nice)
 	- when installing, KEEP THE installed commit so you can uninstall it if you want
-
-- Install Qt using the official online installer: http://qt-project.org/downloads (also install source code, it may help in future for debugging or better understanding)
-	- if you get an error about a missing `GL/gl.h` when trying to run a basic Qt Quick project, install `libgl1-mesa-dev` package
-	- activate Todo plugin in the About Plugins window then restart then
-		- in Qt Creator -> Options -> To-Do:
-			- add TWVF To-Do keyword (with gray background and info icon)
-			- select scanning scope: Scan in the whole project
-	- Dacă dai peste o eroare la compilarea unui proiect cu instrucțiunea 'QT += webkitwidgets' (care folosește QWebView în designer) care spune că lipsesc anumite fișiere biblioteci (can't find -lXXX), cauta XXX pe packages.ubuntu.com si gasesti exact pachetele care trebuie instalate.
-	- Qt Creator Options
-		- Text Editor -> Behavior -> Show help tooltips using keyboard shortcut (alt) -> Check
-		- Text Editor -> Display -> Text Wrapping -> Display right margin at column... -> Check (let it at 80)
-			- its value is used for Ctrl+E,R keyboard shortcut even if the checkbox is disabled, I'd better
-			enable it to see what's happening. I want to stay at 80 for consistency with code I wrote in the past
-			and with the convention (if I will share some code with others in the future).
-		- Build & Run -> General -> Build and Run -> Save all files before build -> Check
-		- Debugger -> General -> Behavior -> Use tooltips in main editor while debugging
-		- always show help in a separate window
-			- in the help window add a bookmarks section
-				- when un/reinstalling save these bookmarks
 
 - Install mind-mapping software:
 	- Install FreeMind (also Anki, maybe) for learning:
@@ -340,16 +289,7 @@ I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in 
 
 - Rulez comanda `sudo apt-get install dos2unix` în Terminal, pentru a putea folosi mai târziu comenzile unix2dos și dos2unix pentru convertirea caracterelor de sfârșit de rând (de exemplu, când pun un fișier text în Dropbox/Partajate).
 
-- Pentru opțiunea „Deschide în terminal” în meniul contextual din Nautilus (inclusiv în spațiul de lucru), rulez:
-    ```
-	$ sudo apt-get install nautilus-open-terminal
-	$ nautilus -q # pentru închiderea tuturor proceselor nautilus
-	$ nautilus -n # în Alt+F2, pentru pornirea procesului nautilus pentru spațiul de lucru
-	```
-
 - Pentru comanda 'tree', rulez: `sudo apt-get install tree`.
-
-- Pentru analizarea performanței C++ în Qt Creator rulez: `sudo apt-get install valgrind`.
 
 - Pentru aflarea temperaturii CPU: http://askubuntu.com/questions/15832/how-do-i-get-the-cpu-temperature
 	```
@@ -368,11 +308,11 @@ I've done `sudo alsa force-reload` and then I was able to launch `alsamixer` in 
 
 - Alt program folositor de instalat (URI-uri de introdus în Chrome): [apt://unity-tweak-tool](apt://unity-tweak-tool) (o instalez și când o deschid apare mesajul:
 	- > The following schema is missing
-	  >	
+	  >
 	  > com.canonical.unity.webapps
-	  >	
+	  >
 	  > In order to work properly, Unity Tweak Tool recommends you install the necessary packages.
-	
+
 	- Pe askubuntu problema se rezolvă astfel:
 		```
 		sudo apt-get install unity-webapps-service
@@ -412,11 +352,7 @@ Configurări de sistem > Programe și actualizări > Drivere adiționale (Pe lap
 	force_color_prompt=yes
 	```
 
-- LAMP - Linux, Apache, MySQL, PHP - instalare: pachetele apache2 apoi php se
-instalează cu
-	```
-	sudo apt-get install apache2 php mysql-server php-mysql
-	```
+- Install Docker,
 	apoi trebuie în /etc/apache2/apache2.conf să adăugăm la final rândul „ServerName localhost”. Dacă rulăm `sudo apachectl start` în
 terminal, putem deschide http://localhost/ în browser. Rădăcina implicită a documentelor
 Apache pe Ubuntu este `/var/www/html`. Scripturile PHP astfel funcționează. Pentru
@@ -442,7 +378,6 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
 	```
 
 - Setez în Configurări de sistem > Hardware > Tastatură > Scurtături, scurtătura `Ctrl+Shift+Esc` comenzii `gnome-system-monitor` (pentru când SO nu mai funcționează și trebuie să forțez terminarea unui proces).
-	- BUG: în Ubuntu 17.04, chiar și după o repornire a calculatorului (laptopului), noua combinație de taste nu funcționează.
 
 - Ca alternativă la Paint.NET pentru Ubuntu, folosesc Pinta:
 	- https://pinta-project.com/pintaproject/pinta/.
