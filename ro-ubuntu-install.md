@@ -51,13 +51,6 @@
 			- http://askubuntu.com/a/368908/29733
 				- `$ sudo add-apt-repository ppa:ubuntu-mozilla-security/ppa` then check for updates
 
-- Flash
-	- BUG: Flash Player visual artifacts/defects/glitches/render issues etc. Possible solutions: Many ways to install Flash Player on askubuntu, ubuntu forums, google, check if error appears in google chrome and firefox, not just in chromium, or if disabling hdw acceleration or switching to nouveau driver solves the problem
-		- http://askubuntu.com/questions/180629/flash-problem-after-installed-nvidia?rq=1
-		- http://askubuntu.com/questions/86164/how-do-i-fix-flash-issues
-		- http://askubuntu.com/questions/11/how-do-i-install-adobe-flash-player
-	- BUG (maybe part of the bug above): Flash bug on YouTube: after you scroll the page, the YT player becomes black. Reloading the page sometimes solves the problem. On FF it's the same situation.
-
 - Configurări de sistem - Toate configurările
 	- Aspect > Comportament > Add show desktop icon to the launcher > On.
 	- Aspect > Aspect > Dimensiunea iconițelor din lansator > 33.
@@ -194,6 +187,9 @@
 	- Search link: http://askubuntu.com/search?q=13.10+indicators.
 
 - Install ubuntu-tweak after adding this PPA: https://launchpad.net/~tualatrix/+archive/ppa (only if I start using some option in it).
+  - 1. Open GNOME Tweaks
+    2. Select ‘Top Bar’
+    3. Slide “Battery Percentage” setting to ‘on’
 
 - Install VIM
     - Copy [the `.vimrc` file from my `dotfiles` GitHub repo](https://github.com/silviubogan/dotfiles/blob/master/.vimrc), install Vimium (see the readme
@@ -382,6 +378,35 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
 - Ca alternativă la Paint.NET pentru Ubuntu, folosesc Pinta:
 	- https://pinta-project.com/pintaproject/pinta/.
 
+
+- Enable Minimise on Click in GNOME Shell
+  - `gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'`
+
+- Change Touchpad Scroll Direction
+  - 1. Open Settings
+    2. Go to Mouse & Touchpad
+    3. Slide the “Natural Scrolling” toggle to on
+
+- Install Telegram, Tilix, Flameshot, Neofetch, cryfs
+- `sudo snap install cawbird`
+
+- `/.bashrc` contents until I fully switch to fish:
+	```bash
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+	function cd_up() {
+		cd $(printf "%0.s../" $(seq 1 $1 ));
+	}
+	alias 'cd..'='cd_up'
+
+	export EDITOR="code"
+	```
+
+- Install backups of shell scripts into `~/bin`.
+
 - Instalez actualizări.
 - La final rulez și:
 	```
@@ -390,3 +415,5 @@ a reporni doar serverul mysql, folosim `sudo systemctl restart mysql`. Modifică
 
 ## La reinstalarea Ubuntu
 Fac copie de siguranță la depozitele apt din Surse Software, inclusiv cele dezactivate care s-ar putea să înceapă să funcționeze din nou.
+
+Make backups of shell scripts from `~/bin`.
