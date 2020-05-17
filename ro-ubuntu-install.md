@@ -135,7 +135,10 @@
 - `mkdir ~/bin` then add `~/bin` to `$PATH` using *fish*:
   - create or modify the file `~/.config/fish/config.fish`:
     - append
-      - `set PATH "$PATH:/home/silviu/bin:/home/silviu/opt/todo.txt-cli/bin"`
+		```
+		set PATH "$PATH:/home/silviu/bin:/home/silviu/opt/todo.txt-cli/bin"
+		alias t todo.sh
+		```
 
 - Install Node.js
 	- For a recent version of nodejs and a recent version of npm (>1.3) which is needed for 'grunt' 4.1 from the npm registry which is to be installed once in each of the project folders using Grunt.js, run these lines: taken from https://github.com/IonicaBizau/dotfiles/blob/master/apps/node.sh (another source: https://github.com/gruntjs/grunt/pull/886#issuecomment-27914161):
